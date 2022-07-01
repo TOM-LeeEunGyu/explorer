@@ -1,0 +1,48 @@
+{
+	"name": "test-network",
+	"version": "1.0.0",
+	"client": {
+		"tlsEnable": true,
+		"adminCredential": {
+			"id": "exploreradmin",
+			"password": "exploreradminpw"
+		},
+		"enableAuthentication": true,
+		"organization": "Org1MSP",
+		"connection": {
+			"timeout": {
+				"peer": {
+					"endorser": "300"
+				},
+				"orderer": "300"
+			}
+		}
+	},
+	"channels": {
+		"mychannel": {
+			"peers": {
+				"peer0.org1.themedium.io": {}
+			}
+		}
+	},
+	"organizations": {
+		"Org1MSP": {
+			"mspid": "Org1MSP",
+			"adminPrivateKey": {
+				"path": "/tmp/crypto/peerOrganizations/org1.themedium.io/users/Admin@org1.themedium.io/msp/keystore/{{ADMINKEYSTORE}}"
+			},
+			"peers": ["peer0.org1.themedium.io"],
+			"signedCert": {
+				"path": "/tmp/crypto/peerOrganizations/org1.themedium.io/users/Admin@org1.themedium.io/msp/signcerts/cert.pem"
+			}
+		}
+	},
+	"peers": {
+		"peer0.org1.themedium.io": {
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/org1.themedium.io/peers/peer0.org1.themedium.io/tls/ca.crt"
+			},
+			"url": "grpcs://peer0.org1.themedium.io:7051"
+		}
+	}
+}
